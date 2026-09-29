@@ -1,6 +1,6 @@
 import numpy as np
-from python.fluid.bilinear_interpolation import bilinear_interpolation
-from python.fluid.sample_velocity import sample_velocity
+from bilinear_interpolation import bilinear_interpolation
+from sample_velocity import sample_velocity
 def advect_u(u, v, dt, h):
     ny = u.shape[0]
     nx = u.shape[1] - 1

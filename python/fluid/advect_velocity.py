@@ -1,5 +1,5 @@
-from python.fluid.advect_u import advect_u
-from python.fluid.advect_v import advect_v
+from advect_u import advect_u
+from advect_v import advect_v
 
 def advect_velocity(u, v, dt, h):
     u_old = u.copy()

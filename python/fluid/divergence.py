@@ -12,7 +12,7 @@ def divergence(u, v, h):
 
     return du_dx + dv_dy
 
-if "name" == "main":
+if __name__ == "__main__":
     nx = 3
     ny = 3
 

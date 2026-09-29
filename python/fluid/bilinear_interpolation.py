@@ -5,7 +5,7 @@ def bilinear_interpolation(
         y,
         h,
         x_offset,
-        y_offset
+        y_offset,
 ):
     ny, nx = field.shape
 
@@ -24,10 +24,10 @@ def bilinear_interpolation(
     i1 = np.mod(i0_raw + 1, nx)
     j1 = np.mod(j0_raw + 1, ny)
 
-    f00 = field[i0, j0]
-    f10 = field[i0, j1]
-    f01 = field[i1, j0]
-    f11 = field[i1, j1]
+    f00 = field[j0, i0]
+    f10 = field[j0, i1]
+    f01 = field[j1, i0]
+    f11 = field[j1, i1]
 
     return(
         (1 - fx) * (1 - fy) * f00

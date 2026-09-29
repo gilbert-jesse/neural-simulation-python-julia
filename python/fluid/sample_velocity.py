@@ -1,5 +1,5 @@
 import numpy as np
-from python.fluid.bilinear_interpolation import bilinear_interpolation
+from bilinear_interpolation import bilinear_interpolation
 def sample_velocity(
         u, v, x, y, h
 ):

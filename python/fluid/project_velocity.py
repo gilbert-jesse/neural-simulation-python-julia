@@ -1,8 +1,7 @@
 import numpy as np
-from python.fluid.divergence import divergence
-from python.fluid.jacobi import jacobi
-from python.fluid.laplacian import laplacian
-from python.fluid.pressure_gradient import pressure_gradient_staggered
+from divergence import divergence
+from jacobi import jacobi
+from pressure_gradient import pressure_gradient_staggered
 
 def project_velocity(u_star, v_star, dt=1.0, rho=1.0, h=1.0, iter=100):
     velocity_star_div = divergence(u_star, v_star, h)

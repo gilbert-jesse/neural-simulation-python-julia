@@ -1,6 +1,6 @@
-from python.fluid.advect_velocity import advect_velocity
-from python.fluid.project_velocity import project_velocity
-def fluid_step(u, v, dt, h):
+from advect_velocity import advect_velocity
+from project_velocity import project_velocity
+def fluid_step(u, v, dt, rho, h, n_iter,):
     u_star, v_star = advect_velocity(
         u,
         v,
