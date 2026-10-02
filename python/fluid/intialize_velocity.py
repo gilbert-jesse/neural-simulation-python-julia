@@ -12,7 +12,7 @@ def initialize_velocity(nx, ny, h):
     v = np.zeros((ny+1, nx))
 
     # u_locations
-    x_u = np.arange(nx) * h
+    x_u = (np.arange(nx) * h)
     y_u = (np.arange(ny) + 0.5 * h)
 
     X_u, Y_u = np.meshgrid(x_u, y_u)
