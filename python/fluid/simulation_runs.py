@@ -23,6 +23,7 @@ divergence_after_projection = []
 u_initial = u.copy()
 v_initial = v.copy()
 
+
 for step in range(n_steps):
 
     #advection
