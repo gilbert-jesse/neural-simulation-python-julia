@@ -10,8 +10,9 @@ def advect_field(
         h,
         x_offset,
         y_offset,
+        return_departure=False,
 ):
-    ny, nx = field.size
+    ny, nx = field.shape
 
     x = (np.arange(nx) + x_offset) * h
     y = (np.arange(ny) + y_offset) * h
@@ -29,7 +30,7 @@ def advect_field(
     X_back = X - dt * vel_x
     Y_back = Y - dt * vel_y
 
-    q_advected = bilinear_interpolation(
+    field_advected = bilinear_interpolation(
         field,
         X_back,
         Y_back,
@@ -38,4 +39,7 @@ def advect_field(
         y_offset=y_offset,
     )
 
-    return q_advected
+    if return_departure:
+        return X_back, Y_back, field_advected
+
+    return field_advected
