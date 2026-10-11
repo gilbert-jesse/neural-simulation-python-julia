@@ -27,6 +27,10 @@ iter = 500
 u, v = initialize_velocity(nx,
                            ny,
                            h,)
+u_MC, v_MC = initialize_velocity(nx,
+                           ny,
+                           h,)
+
 divergence_before_projection = []
 divergence_before_projection_MC = []
 
@@ -50,13 +54,13 @@ v_initial = v.copy()
 for step in range(n_steps):
 
     energy_before_SL.append(kinetic_energy(u, v))
-    energy_before_MC.append(kinetic_energy(u, v))
+    energy_before_MC.append(kinetic_energy(u_MC, v_MC))
 
 
     #advection
 
     u_star, v_star = advect_velocity(u, v, dt, h,)
-    u_star_mc, v_star_mc = maccormark_advect_velocity(u, v, dt, h)
+    u_star_mc, v_star_mc = maccormark_advect_velocity(u_MC, v_MC, dt, h)
 
     div_star = np.linalg.norm(divergence(u_star, v_star, h,))
     div_star_MC = np.linalg.norm(divergence(u_star_mc, v_star_mc, h,))
@@ -144,7 +148,7 @@ print(
 
 
 # plt.figure(figsize=(8, 5))
-fig, ax = plt.subplots(1, 2, figsize=(8, 5))
+fig, ax = plt.subplots(1, 2, figsize=(12, 5), sharey=True,)
 
 ax[0].plot(
     np.arange(1, n_steps + 1),
