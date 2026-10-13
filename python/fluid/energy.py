@@ -6,6 +6,7 @@ from divergence import divergence
 from project_velocity import project_velocity
 from visualize_vel import velocity_to_cell_centers
 from macmormark_advect_velocity import maccormark_advect_velocity
+from add_body_forces import add_body_forces
 
 
 def kinetic_energy(u, v):
@@ -69,12 +70,29 @@ for step in range(n_steps):
     energy_after_advection_SL.append(kinetic_energy(u_star, v_star))
     energy_after_advection_MC.append(kinetic_energy(u_star_mc, v_star_mc))
 
+    u_force, v_force = add_body_forces(
+    u_star,
+    v_star,
+    dt,
+    force_x=0.0,
+    force_y=-1.0,
+    )
+
+    u_force_MC, v_force_MC = add_body_forces(
+    u_star_mc,
+    v_star_mc,
+    dt,
+    force_x=0.0,
+    force_y=-1.0,
+    )
+
+
 
     #project
 
     u, v, p = project_velocity(
-        u_star,
-        v_star,
+        u_force,
+        v_force,
         dt=dt,
         rho=rho,
         h=h,
@@ -82,8 +100,8 @@ for step in range(n_steps):
     )
 
     u_MC, v_MC, p_MC = project_velocity(
-            u_star_mc,
-            v_star_mc,
+            u_force_MC,
+            v_force_MC,
             dt=dt,
             rho=rho,
             h=h,

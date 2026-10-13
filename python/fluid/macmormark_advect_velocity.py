@@ -2,6 +2,7 @@ from bilinear_interpolation import bilinear_interpolation
 import numpy as np
 from advect_field import advect_field
 from interpolation_bounds import interpolation_bounds
+from add_body_forces import add_body_forces
 
 def maccormark_advect_velocity(
         u,
@@ -103,6 +104,8 @@ def maccormark_advect_velocity(
         v_min,
         v_max,
     )
+
+
 
     u_new = np.column_stack(
         [u_limited, u_limited[:, 0]]
